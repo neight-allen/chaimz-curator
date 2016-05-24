@@ -21,6 +21,14 @@ class ChaimzService
     parse(get_artist(id))
   end
 
+  def post_artist
+    @connection.post "artists"
+  end
+
+  def create_artist(new_artist_hash)
+    @connection.params[:name] = new_artist_hash[:name]
+  end
+
   def parse(response)
     JSON.parse(response.body, symbolize_names: true)
   end

@@ -16,4 +16,8 @@ class Album < OpenStruct
     end
   end
 
+  def save
+
+  end
+
 end
