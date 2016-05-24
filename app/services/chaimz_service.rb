@@ -9,8 +9,16 @@ class ChaimzService
     @connection.get "artists"
   end
 
+  def get_artist(id)
+    @connection.get "artists/#{id}"
+  end
+
   def artists_hash
     parse(get_artists)
+  end
+
+  def artist_hash(id)
+    parse(get_artist(id))
   end
 
   def parse(response)
