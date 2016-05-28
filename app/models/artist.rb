@@ -1,7 +1,7 @@
 class Artist < OpenStruct
 
   def self.service
-    ChaimzService.new
+    ArtistService.new
   end
 
   def self.find(id)
@@ -16,9 +16,16 @@ class Artist < OpenStruct
     end
   end
 
-
   def save
+    # This save method will only work on creating new artists.
+    # We still need to extend this method to update existing ones
     Artist.service.create_artist(self.to_h)
   end
 
+  def albums
+    Album.all.select { |album| album.artist_id == self.id }
+  end
+
+
+  
 end

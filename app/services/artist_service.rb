@@ -1,4 +1,4 @@
-class ChaimzService
+class ArtistService
 
   def initialize
     @connection = Faraday.new(url: "https://my-chaimz.herokuapp.com/api/v1/")
@@ -10,6 +10,7 @@ class ChaimzService
   end
 
   def get_artist(id)
+    # Watch out for leading slashes in your URLs. They will be treated the same way hrefs are in <a> tags
     @connection.get "artists/#{id}"
   end
 
@@ -26,7 +27,7 @@ class ChaimzService
   end
 
   def create_artist(new_artist_hash)
-    @connection.params[:name] = new_artist_hash[:name]
+    @connection.params = new_artist_hash
   end
 
   def parse(response)
